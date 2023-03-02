@@ -15,12 +15,41 @@ et on peut alors les afficher
 
 ## Installation
 
-dans le .env
+Prerequis :
 
+-   php > 8.1,
+-   composer 2.5.4
+
+Il faut installer les dépendances php :
+
+`composer install`
+
+Puis créer le fichier database.sqlite :
+
+`touch database/database.sqlite`
+
+Renommer le .env.example en `.env` et modifier les configurations suivantes :
+
+```
 DB_CONNECTION=sqlite
 DB_DATABASE=\absolute\path\to\database.sqlite
 DB_FOREIGN_KEYS=true
+```
 
-php artisan migrate
+Puis générer une KEY
 
-php artisan serve
+`php artisan key:generate`
+
+Puis lancer les migrations
+
+`php artisan migrate`
+
+Puis créer un créer lien symbolique pour les images
+
+`php artisan storage:link`
+
+Puis lancer le serveur
+
+`php artisan serve`
+
+et ouvrir le navigateur http://localhost:8000/
